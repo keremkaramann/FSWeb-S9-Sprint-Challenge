@@ -117,14 +117,15 @@ export default function AppFunctional(props) {
         setInitialMsg(resp.data.message);
       })
       .catch((err) => {
-        console.log("Error: ", err);
         setInitialMsg("Ouch: email is required");
       });
   }
   return (
     <div id="wrapper" className={props.className}>
       <div className="info">
-        <h3 id="coordinates">{getXYMesaj()}</h3>
+        <h3 id="coordinates" data-testid="coord-test">
+          {getXYMesaj()}
+        </h3>
         <h3 id="steps">{initialStep} kere ilerlediniz</h3>
       </div>
       <div id="grid">
@@ -138,19 +139,33 @@ export default function AppFunctional(props) {
         ))}
       </div>
       <div className="info">
-        <h3 id="message">{initialMsg} </h3>
+        <h3 id="message" data-testid="message">
+          {initialMsg}{" "}
+        </h3>
       </div>
       <div id="keypad">
-        <button id="left" onClick={() => ilerle("left")}>
+        <button
+          id="left"
+          data-testid="left-bnt-test"
+          onClick={() => ilerle("left")}
+        >
           SOL
         </button>
-        <button id="up" onClick={() => ilerle("up")}>
+        <button id="up" data-testid="up-btn-test" onClick={() => ilerle("up")}>
           YUKARI
         </button>
-        <button id="right" onClick={() => ilerle("right")}>
+        <button
+          id="right"
+          data-testid="rgt-btn-test"
+          onClick={() => ilerle("right")}
+        >
           SAĞ
         </button>
-        <button id="down" onClick={() => ilerle("down")}>
+        <button
+          id="down"
+          data-testid="bottom-btn-test"
+          onClick={() => ilerle("down")}
+        >
           AŞAĞI
         </button>
         <button id="reset" onClick={reset}>
@@ -164,8 +179,9 @@ export default function AppFunctional(props) {
           placeholder="email girin"
           onChange={(e) => onChange(e)}
           value={initEmail}
+          data-testid="input-test"
         ></input>
-        <input id="submit" type="submit"></input>
+        <input id="submit" type="submit" data-testid="submit-btn"></input>
       </form>
     </div>
   );
