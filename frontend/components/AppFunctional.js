@@ -44,7 +44,6 @@ export default function AppFunctional(props) {
     switch (yon) {
       case "left":
         if (activeInx % 3 === 0) {
-          // If "B" is at the left edge, prevent moving left
           setInitialMsg("You can't go left");
           return activeInx;
         }
@@ -53,7 +52,6 @@ export default function AppFunctional(props) {
         break;
       case "up":
         if (Math.floor(activeInx / 3) === 0) {
-          // If "B" is at the top edge, prevent moving up
           setInitialMsg("You can't go up");
           return activeInx;
         }
@@ -62,7 +60,6 @@ export default function AppFunctional(props) {
         break;
       case "right":
         if (activeInx % 3 === 2) {
-          // If "B" is at the right edge, prevent moving right
           setInitialMsg("You can't go right");
           return activeInx;
         }
@@ -71,7 +68,6 @@ export default function AppFunctional(props) {
         break;
       case "down":
         if (Math.floor(activeInx / 3) === 2) {
-          // If "B" is at the bottom edge, prevent moving down
           setInitialMsg("You can't go down");
           return activeInx;
         }
@@ -118,7 +114,6 @@ export default function AppFunctional(props) {
     axios
       .post("http://localhost:9000/api/result", dataToSend)
       .then((resp) => {
-        console.log("Data here: ", resp.data);
         setInitialMsg(resp.data.message);
       })
       .catch((err) => {
